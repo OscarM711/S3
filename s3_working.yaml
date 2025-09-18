@@ -1,7 +1,15 @@
-AWSTemplateFormatVersion: 2019-09-09
-Resorces:
+# Description of what this change includes: Changed AWSTemplateFormatVersion to 2010-09-09
+# from 2019-09-09 to fix S3 bucket creation error.
+# Changed Type of BucketPolicy from 'AWS:S3:BucketPolicy' to 'AWS::S3::BucketPolicy'
+# Changed indentation of BucketPolicy to be at same level as S3Bucket
+# Changed indentation of Properties under BucketPolicy to be at same level as Type 
+# Uncommented Type line under BucketPolicy
+# Revision number: 1
+# Date: 2024-06-17
+AWSTemplateFormatVersion: 2010-09-09
+Resources:
   S3Bucket:
-    Type: 'AWS:S3:Bucket'
+    Type: 'AWS::S3::Bucket'
     Properties:
       PublicAccessBlockConfiguration:
         BlockPublicAcls: false
@@ -13,8 +21,8 @@ Resorces:
         ErrorDocument: error.html
     DeletionPolicy: Retain
     UpdateReplacePolicy: Retain
-BucketPolicy:
-    #Type: 'AWS::S3::BucketPolicy'
+  BucketPolicy:
+    Type: 'AWS::S3::BucketPolicy'
     Properties:
       PolicyDocument:
         Id: MyPolicy
